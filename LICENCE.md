@@ -1,0 +1,1 @@
+<b>Geogit is under GPL licence.</b>
