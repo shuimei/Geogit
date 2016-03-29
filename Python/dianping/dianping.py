@@ -49,22 +49,11 @@ def getInfoTable(content):
 		addr.append(i.text)
 	for i in lists.find_all('b'):
 		b.append(i.text)
-	# for i in xrange(len(b)):
-	# 	if i%5==0:
-	# 		comment.append(b[i])
-	# 	elif i%5==1:
-	# 		price.append(b[i])
-	# 	elif i%5==2:
-	# 		score.append([b[i],b[i+1],b[i+2]])
-
+		
 	for bb in b:
 		if '.' in bb:
 			score.append(bb)
 
-
-	# taste=[score[i] for i in xrange(len(score)) if (i+1)%3==1]
-	# env=[score[i] for i in xrange(len(score)) if (i+1)%3==2]
-	# service=[score[i] for i in xrange(len(score)) if (i+1)%3==0]
 
 	table = pd.DataFrame(
 	        {
@@ -86,10 +75,13 @@ if __name__ == '__main__':
 		'food':['g114', 'g101','g113', 'g132', 'g112', 'g117', 'g110', 'g116', 'g111', 'g103', 'g508', 'g102', 'g115', 'g109', 'g106', 'g104', 'g248', 'g3243', 'g251', 'g26481', 'g203', 'g107', 'g105', 'g108', 'g118', 'g133', 'g134', 'g246', 'g247', 'g249', 'g250', 'g252', 'g311', 'g26482', 'g26484'],
 		'entertainment':['g135','g141','g14','g132','g1','g20041','g5672','g20042','g144','g2004','g2754','g20038','g6694','g32732','g137','g134','g156','g20039','g2827','g142','g136','g2649'],
 		'shopping':['g120','g187','g119','g235','g125','g27809','g27810','g27811','g27812','g128','g123','g122','g6715','g6716','g6717','g26085','g124','g121','g127','g126','g6828','g6827','g6829','g6830','g20020','g20022','g20023','g20025','g32703','g32705','g129'],
-	}
+		'conference':['g165','g3014','g3016','g3018','g1040','g1191','g2738','g2740',],
+		'beauty':['g157','g158','g33761','g148','g149','g2898','g159','g493','g123','g2572','g183','g2790','g6700'],
+		'life service':['g26465','g237','g181','g4607','g26117','g195','g835','g612','g197','g980','g836','g2929','g32742','g2932',]
+		}
 	# region set url parameters
 	location=parameters['location']
-	regions=parameters['regions'][5:]
+	regions=parameters['regions']
 	category=parameters['category']['shopping']
 	subcategories=parameters['shopping']
 	workSpaceDir='./dianping'
