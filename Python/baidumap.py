@@ -61,8 +61,8 @@ def getlnglat(address, city, ak):
 
 if __name__ == '__main__':
 	aksIter=iter(aks)
-	with open('./data/dianping_beauty.csv','rb') as f:
-		with open('./data/dianping_beauty_geocoding.csv','w+') as g:
+	with open('F:/codes/python/data/dianping_shopping.csv','rb') as f:
+		with open('F:/codes/python/data/dianping_shopping_geocoding.csv','w+') as g:
 			t=f.next().rstrip('\r\n')
 			g.write(t+',lng,lat,confidence\n')
 			try:
@@ -70,7 +70,6 @@ if __name__ == '__main__':
 				ak=aksIter.next()
 				while True:
 					line=f.next().rstrip('\r\n')
-					print line
 					address=line.split(',')[5].decode('utf-8')
 					# print address
 					result=json.loads(getlnglat(address, u'上海市',aks[0]))
@@ -81,7 +80,7 @@ if __name__ == '__main__':
 						g.write(line+','+str(result['result']['location']['lng'])+','+str(result['result']['location']['lat'])+','+str(result['result']['confidence'])+'\n')
 						print line+','+str(result['result']['location']['lng'])+','+str(result['result']['location']['lat'])+','+str(result['result']['confidence'])
 					i += 1
-					time.sleep(0.2)
+					time.sleep(0)
 					if i > 5000:
 						ak=aksIter.next()
 
