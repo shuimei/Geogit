@@ -1,6 +1,6 @@
-filePath='E:\Data\Washington\cloudQF1Clip';
+filePath='I:\DATA\VIIRS\DALLAS\20150811_20150820\CloudMask\TIF';
 fileList=dir(fullfile(filePath,'*.tif'));
-outPath='E:\Data\Washington\cloudResult';
+outPath='I:\DATA\VIIRS\DALLAS\20150811_20150820\CloudMask';
 i=1;
 n=length(fileList);
 while(i<=n)
@@ -28,7 +28,8 @@ while(i<=n)
     geotiffwrite(outFile,cloudConfi,R,'GeoKeyDirectoryTag', info.GeoTIFFTags.GeoKeyDirectoryTag);
     %C = arrayfun(@(x)dec2bin(x,8),I,'UniformOutput',false);
     
-    i=i+1
+    i=i+1;
+    
 end
     
 
