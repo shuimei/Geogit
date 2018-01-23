@@ -11,8 +11,8 @@ def deco(func):
 @deco
 def iterBuffer(inGeom,times=1,error=1):
 	area=inGeom.GetArea()
-	targetArea=area*times
-	presentArea=targetArea+2*error
+	targetArea=area * times
+	presentArea=targetArea+2 * error
 	bufferedGeom=inGeom
 	smallDis=0
 	bigDis=20000.0
@@ -31,13 +31,14 @@ def iterBuffer(inGeom,times=1,error=1):
 		# print tmpDis
 		time.sleep(0)
 	print tmpDis
-	return inGeom.Buffer(tmpDis),times
+	return inGeom.Buffer(tmpDis), times
 	# print 'error:',targetArea-presentArea
 
 if __name__ == '__main__':
 	# Get a Layer
-	inShapefile = r"C:\Users\GIS336\Desktop\codes\python\Working\data\sample\greenland samples.shp"
-	outShapefile = r"C:\Users\GIS336\Desktop\codes\python\Working\data\sample\greenland samples buffers.shp"
+	year = "2015"
+	inShapefile = r"E:\Documents\Lab Issues\chenshengzi\data\%s\%sBI.shp"%(year, year)
+	outShapefile = r"E:\Documents\Lab Issues\chenshengzi\data\%s\%sBI_buffer.shp"%(year, year)
 	inDriver = ogr.GetDriverByName("ESRI Shapefile")
 	inDataSource = inDriver.Open(inShapefile, 0)
 	inLayer = inDataSource.GetLayer()
@@ -63,7 +64,8 @@ if __name__ == '__main__':
 	for feature in inLayer:
 		fid = feature.GetField(0)
 		inGeom = feature.GetGeometryRef()
-		iterBuffers=[iterBuffer(inGeom,times=i,error=1) for i in xrange(1,16)]
+		# iterBuffers=[iterBuffer(inGeom,times=i,error=1) for i in xrange(1,16)]
+		iterBuffers=[iterBuffer(inGeom,times=i,error=1) for i in xrange(2,3)]
 		# buffer1=iterBuffer(inGeom,times=15,error=0.001)
 		for bufferGeom in iterBuffers:
 			# create a new feature
